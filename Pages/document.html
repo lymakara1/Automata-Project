@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .rotate-180 {
+        transform: rotate(180deg);
+      }
+      .answer p {
+        background-color: rgb(6, 210, 109) !important;
+        padding: 15px;
+        border-radius: 25px;
+        color: white !important;
+      }
+    </style>
+  </head>
+  <body class="">
+    <div class="questionAnswer w-[800px]">
+      <p class="text-3xl font-semibold text-gray-500">What is Text Board?</p>
+      <p>
+        Text Board is an online tool that allows you to input text and customize
+        its animation, direction, font, and any other features.
+      </p>
+      <div id="questionsContainer"></div>
+      <div class="answer hidden mt-[10px]"></div>
+    </div>
+    <script>
+      const questions = [
+        "How do I start using Text Board?",
+        "How do I change the scroll direction?",
+        "How can I adjust the scroll speed?",
+        "How do I make my text blink?",
+        "How do I set the blink frequency?",
+        "How do I change the font?",
+        "How can I adjust the font size?",
+        "How do I change the font color?",
+        "How do I set the background color?",
+        "How do I use the special feature ?"
+        // Add more questions here if needed
+      ];
+
+      const answers = [
+        "Simply enter your text in the input box, choose your desired settings, and it will automatically run to see your text animate across the screen.",
+        `In Costomization: -> Select "Left to Right" or "Right to Left" arrow in the scroll direction.`,
+        `In Costomization: -> Use the speed slider to control a specific value the speed from left to right.`,
+        `In Costomization: -> Find the Blink Button and press "On Blink Button."`,
+        `In Costomization: -> Use the slider to control a specific value the blink frequency from left to right.`,
+        `In Font Setting: -> Find the font Font Option and then select a specific font.`,
+        `In Font Setting: -> Find the Font-Size Option and then click on the "Increment" or "Decrement" button`,
+        `In Font Setting: -> Choose a color from "the palette", click on the color you want.`,
+        `In Font Setting: -> Choose a color from "the palette" , click on the color you want.`,
+        `In Premium Settings: -> Select any special feature that you want to and then click on its button.`
+
+        // Add corresponding answers here
+      ];
+
+      const questionsContainer = document.getElementById("questionsContainer");
+
+      questions.forEach((question, index) => {
+        const questionDiv = document.createElement("div");
+        questionDiv.classList.add("question");
+
+        const questionInnerDiv = document.createElement("div");
+        questionInnerDiv.classList.add(
+          "question",
+          "flex",
+          "justify-between",
+          "flex-row",
+          "items-center",
+          "w-[800px]",
+          "h-[50px]",
+          "rounded-[25px]",
+          "pl-[15px]",
+          "pr-[30px]",
+          "mt-[10px]",
+          "bg-blue-200",
+          "cursor-pointer"
+        );
+
+        const questionText = document.createElement("span");
+        questionText.textContent = `${index + 1}. ${question}`;
+
+        const svgIcon = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        svgIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        svgIcon.setAttribute("viewBox", "0 0 512 512");
+        svgIcon.classList.add("w-6", "h-6"); // Added Tailwind classes for sizing
+        const path = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path"
+        );
+        path.setAttribute("fill", "#74C0FC");
+        path.setAttribute(
+          "d",
+          "M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+        );
+        svgIcon.appendChild(path);
+
+        questionInnerDiv.appendChild(questionText);
+        questionInnerDiv.appendChild(svgIcon);
+        questionDiv.appendChild(questionInnerDiv);
+
+        const answerDiv = document.createElement("div");
+        answerDiv.classList.add("answer", "hidden", "mt-[10px]");
+        answerDiv.innerHTML = `<p>${answers[index]}</p>`;
+
+        questionDiv.appendChild(answerDiv);
+
+        questionDiv.addEventListener("click", () => {
+          if (answerDiv.classList.contains("hidden")) {
+            answerDiv.classList.remove("hidden");
+            svgIcon.classList.add("rotate-180");
+          } else {
+            answerDiv.classList.add("hidden");
+            svgIcon.classList.remove("rotate-180");
+          }
+        });
+
+        questionsContainer.appendChild(questionDiv);
+      });
+    </script>
+  </body>
+</html>
