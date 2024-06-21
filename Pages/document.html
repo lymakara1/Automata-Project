@@ -4,54 +4,70 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap">
+
     <style>
+      body {
+        font-family: 'Roboto', sans-serif; /* Fallback font */
+      }
       .rotate-180 {
         transform: rotate(180deg);
       }
       .answer p {
-        background-color: rgb(6, 210, 109) !important;
+        background-color: rgb(0, 0, 0);
+        background-image: url(firefox.png), url(bubbles.png),
+      linear-gradient(to bottom, rgb(119, 63, 63), rgba(130, 63, 63, 0));
+      background-repeat: no-repeat, no-repeat, no-repeat;
+      background-position:
+      bottom right,
+      left,
+      right;
         padding: 15px;
         border-radius: 25px;
         color: white !important;
       }
     </style>
   </head>
-  <body class="">
-    <div class="questionAnswer w-[800px]">
-      <p class="text-3xl font-semibold text-gray-500">What is Text Board?</p>
-      <p>
-        Text Board is an online tool that allows you to input text and customize
-        its animation, direction, font, and any other features.
+  <body class="h-screen flex items-center justify-center bg-gray-100 mt-5 font">
+    <div class="questionAnswer w-full max-w-[800px] p-4">
+      <p class="text-3xl font-semibold text-gray-500 flex justify-center">Finite Automation</p>
+      <p class="pl-4">
+        This class represents a finite automaton, which can be either deterministic (DFA) or non-deterministic (NFA).
+      </p>
+      <p class="pl-12">
+        1. states: A set of states in the automaton.<br>
+        2. alphabet: A set of input symbols.<br>
+        3. transitionFunction: An object mapping state-symbol pairs to one or 4. more next states.<br>
+        5. startState: The initial state.<br>
+        6. acceptStates: A set of accept (final) states.<br>
       </p>
       <div id="questionsContainer"></div>
       <div class="answer hidden mt-[10px]"></div>
     </div>
     <script>
       const questions = [
-        "How do I start using Text Board?",
-        "How do I change the scroll direction?",
-        "How can I adjust the scroll speed?",
-        "How do I make my text blink?",
-        "How do I set the blink frequency?",
-        "How do I change the font?",
-        "How can I adjust the font size?",
-        "How do I change the font color?",
-        "How do I set the background color?",
-        "How do I use the special feature ?"
+        "How do I input the value of a State?",
+        "How do I input the value of the Alphabet?",
+        "How can I define the Transition Function?",
+        "How do I start the State Transition?",
+        "what can I do with the Accept Start?",
+        "Sumit form to Create a Automation",
+        "Testing a String -> Ensure Automaton is Defined",
+        "Testing a String -> Input String",
+        "Testing a String -> Submit for Testing"
         // Add more questions here if needed
       ];
 
       const answers = [
-        "Simply enter your text in the input box, choose your desired settings, and it will automatically run to see your text animate across the screen.",
-        `In Costomization: -> Select "Left to Right" or "Right to Left" arrow in the scroll direction.`,
-        `In Costomization: -> Use the speed slider to control a specific value the speed from left to right.`,
-        `In Costomization: -> Find the Blink Button and press "On Blink Button."`,
-        `In Costomization: -> Use the slider to control a specific value the blink frequency from left to right.`,
-        `In Font Setting: -> Find the font Font Option and then select a specific font.`,
-        `In Font Setting: -> Find the Font-Size Option and then click on the "Increment" or "Decrement" button`,
-        `In Font Setting: -> Choose a color from "the palette", click on the color you want.`,
-        `In Font Setting: -> Choose a color from "the palette" , click on the color you want.`,
-        `In Premium Settings: -> Select any special feature that you want to and then click on its button.`
+        "Enter all the states of your automaton, separated by commas. For example: q0, q1, q2.",
+        `Enter the alphabet symbols separated by commas. For example: a, b.`,
+        `Define the transitions in the format state,symbol->nextState, and separate multiple transitions with semicolons. For example: q0,a->q1; q1,b->q2.`,
+        `Enter the start state of your automaton. For example: q0.`,
+        `Enter the accept states, separated by commas. For example: q2.`,
+        `The program will display the details of the defined automaton and indicate whether it is deterministic (DFA) or non-deterministic (NFA).`,
+        `Make sure you have defined the automaton using the steps above.`,
+        `Enter the string you want to test in the input field labeled "Input String".`,
+        `Submit the form to test the string.`
 
         // Add corresponding answers here
       ];
@@ -67,15 +83,16 @@
           "question",
           "flex",
           "justify-between",
-          "flex-row",
           "items-center",
-          "w-[800px]",
+          "w-full",
+          "max-w-[800px]",
           "h-[50px]",
           "rounded-[25px]",
-          "pl-[15px]",
-          "pr-[30px]",
-          "mt-[10px]",
-          "bg-blue-200",
+          "pl-4",
+          "pr-6",
+          "mt-2",
+          "border",
+          "shadow-lg",
           "cursor-pointer"
         );
 
@@ -93,7 +110,7 @@
           "http://www.w3.org/2000/svg",
           "path"
         );
-        path.setAttribute("fill", "#74C0FC");
+        path.setAttribute("fill", "#70C0FC");
         path.setAttribute(
           "d",
           "M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
