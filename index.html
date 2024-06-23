@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finite Automaton</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .rotate-180 {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 p-6">
+    <!-- Header -->
+    <header
+      class="flex justify-between items-center text-center gap-4 bg-white mb-6 p-4 rounded-lg shadow-md"
+    >
+      <img src="logo.png" alt="Logo" class="h-12" />
+      <div class="button-bar flex-grow flex justify-center gap-4">
+        <button
+          class="py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white rounded transition duration-300"
+        >
+          Home
+        </button>
+        <button
+          class="py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white rounded transition duration-300"
+        >
+          About
+        </button>
+        <button
+          class="py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white rounded transition duration-300"
+        >
+          Contact
+        </button>
+      </div>
+    </header>
+
+    <!-- Title -->
+    <h1
+      class="text-center text-2xl text-white bg-pink-500 py-4 rounded-lg mb-6"
+    >
+      Finite Automaton Simulator
+    </h1>
+
+    <!-- Main Container -->
+    <div class="container mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <div class="flex flex-col lg:flex-row gap-6 justify-evenly">
+        <!-- Automaton Form -->
+        <form id="faForm" class="flex flex-col">
+          <label for="states">States</label>
+          <input
+            type="text"
+            id="states"
+            class="mb-4 p-2 border border-gray-300 rounded"
+            placeholder="e.g., q0,q1,q2"
+          />
+
+          <label for="alphabet">Alphabet</label>
+          <input
+            type="text"
+            id="alphabet"
+            class="mb-4 p-2 border border-gray-300 rounded"
+            placeholder="e.g., a,b"
+          />
+
+          <label for="transitions">Transitions</label>
+          <input
+            type="text"
+            id="transitions"
+            class="mb-4 p-2 border border-gray-300 rounded"
+            placeholder="e.g., q0,a->q1; q1,b->q2"
+          />
+
+          <label for="startState">Start State</label>
+          <input
+            type="text"
+            id="startState"
+            class="mb-4 p-2 border border-gray-300 rounded"
+            placeholder="e.g., q0"
+          />
+
+          <label for="acceptStates">Accept States</label>
+          <input
+            type="text"
+            id="acceptStates"
+            class="mb-4 p-2 border border-gray-300 rounded"
+            placeholder="e.g., q2"
+          />
+
+          <button
+            type="submit"
+            class="py-2 px-4 bg-green-500 hover:bg-green-700 text-white rounded transition duration-300"
+          >
+            Create Automaton
+          </button>
+        </form>
+
+        <!-- Test String Form -->
+        <form id="testStringForm" class="flex flex-col">
+          <label for="testString">Input String</label>
+          <input
+            type="text"
+            id="testString"
+            class="mb-4 p-2 border border-gray-300 rounded"
+          />
+
+          <button
+            type="submit"
+            class="py-2 px-4 bg-green-500 hover:bg-green-700 text-white rounded transition duration-300"
+          >
+            Test String
+          </button>
+
+          <p id="testResult" class="mt-4 text-lg"></p>
+        </form>
+      </div>
+
+      <!-- Automaton Details -->
+      <div id="faDetails" class="mt-6"></div>
+    </div>
+
+    <!-- Questions and Answers -->
+    <div id="questionsContainer" class="mt-6 space-y-4"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
