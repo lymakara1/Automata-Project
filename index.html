@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finit Automata Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="flex flex-col gap-5">
+    <nav class="bg-gray-500 border-gray-500 rounded-md">
+      <div
+        class="max-w-screen-xl flex flex-wrap justify-between items-center p-4 mx-auto"
+      >
+        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse"
+          ><img src="/Images/logo.png" class="h-8" alt="gic logo" />
+          <span
+            class="text-white self-center text-2xl font-semibold whitespace-nowrap"
+            >Finite Automata</span
+          ></a
+        >
+        <button
+          data-collapse-toggle="navbar-default"
+          type="button"
+          class="inline-flex items-center justify-center md:hidden text-sm rounded-lg hover:bg-gray-200 p-2 w-10 h-10"
+          aria-controls="navbar-default"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span
+          ><svg
+            class="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 17 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15"
+            />
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+          <ul
+            class="font-medium flex flex-col gap-2 p-4 md:m-0 border border-gray-500 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:border-0 md:bg-white"
+          >
+            <li>
+              <a
+                href="#"
+                class="nav-link block py-2 px-3 hover:text-white max-md:hover:bg-gray-500 rounded md:bg-transparent md:hover:text-blue-700 md:focus:text-blue-700 md:p-0 max-md:focus:bg-gray-500 max-md:focus:text-white"
+                data-target="home"
+                >HOME</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="nav-link block py-2 px-3 text-gray-900 rounded hover:text-white max-md:hover:bg-gray-500 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:focus:text-blue-700 md:p-0 max-md:focus:bg-gray-500 max-md:focus:text-white"
+                data-target="about"
+                >ABOUT</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="nav-link block py-2 px-3 text-gray-900 rounded hover:text-white max-md:hover:bg-gray-500 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:focus:text-blue-700 md:p-0 max-md:focus:bg-gray-500 max-md:focus:text-white"
+                data-target="doc"
+                >DOC</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="content rounded-md">
+      <!-- Home page -->
+      <div class="page active" id="home">
+        <div class="main-title">
+          <div class="title">
+            <p>Finite Automaton Manager</p>
+          </div>
+        </div>
+        <div class="container">
+          <div class="section">
+            <div class="title design-title">
+              <p>Design a Finite Automaton</p>
+            </div>
+            <form id="faForm">
+              <label for="states">States (comma separated):</label>
+              <input type="text" id="states" required /><br />
+
+              <label for="alphabet">Alphabet (comma separated):</label>
+              <input type="text" id="alphabet" required /><br />
+
+              <label for="transitions"
+                >Transitions (e.g., q0,a->q1; q1,b->q2):</label
+              >
+              <input type="text" id="transitions" required /><br />
+
+              <label for="startState">Start State:</label>
+              <input type="text" id="startState" required /><br />
+
+              <label for="acceptStates">Accept States (comma separated):</label>
+              <input type="text" id="acceptStates" required /><br />
+
+              <button type="submit">Create FA</button>
+            </form>
+          </div>
+
+          <div class="section">
+            <div class="title design-title">
+              <p>Test a String</p>
+            </div>
+            <form id="testStringForm">
+              <label for="testString">String:</label>
+              <input type="text" id="testString" required /><br />
+              <button type="submit">Test String</button>
+            </form>
+            <div id="testResult"></div>
+          </div>
+          <div class="section">
+            <div class="title design-title design-title1">
+              <p>FA Details</p>
+            </div>
+            <p>Show details:</p>
+            <div id="faDetails" class="show-answer"></div>
+          </div>
+        </div>
+      </div>
+      <!-- About Page -->
+      <div class="page hidden" id="about">
+        <div
+          className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+        >
+          <article
+            className="glassmorhpism w-fit p-3 flex flex-col items-center gap-3"
+          >
+            <img
+              className="w-48 h-48 object-fill rounded-[96px]"
+              src="{profile}"
+              alt="Profile Picture"
+            />
+            <h2 className="text-4xl font-bold text-white">{name}</h2>
+            <p className="w-80 text-white">{descriptions}</p>
+          </article>
+        </div>
+      </div>
+      <!-- Document Page -->
+      <div class="page hidden" id="doc">
+        <div class="questionAnswer p-4 flex flex-col items-center justify-center bg-gray-100 mt-5 font">
+          <p class="text-3xl font-semibold text-gray-500 flex justify-center">Finite Automation</p>
+          <p class="pl-4">
+            This class represents a finite automaton, which can be either deterministic (DFA) or non-deterministic (NFA).
+          </p>
+          <p class="pl-12">
+            1. states: A set of states in the automaton.<br>
+            2. alphabet: A set of input symbols.<br>
+            3. transitionFunction: An object mapping state-symbol pairs to one or 4. more next states.<br>
+            5. startState: The initial state.<br>
+            6. acceptStates: A set of accept (final) states.<br>
+          </p>
+          <div id="questionsContainer"></div>
+          <div class="answer hidden mt-[10px]"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
